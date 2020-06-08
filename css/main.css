@@ -22,6 +22,89 @@ body {
   font-family: Roboto;
 }
 
+/* modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1);
+  transition: 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+  background-color: #fff;
+
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 25px;
+}
+
+.modal-button {
+  margin-top: 10px;
+}
+
+.modal .close {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  left: 480px;
+  top: -100px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: #ffffff;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+}
+
+.modal .close::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(/images/x.svg);
+}
+
+.modal .title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  margin-top: 40px;
+}
+
 /* header */
 
 .header {
@@ -236,6 +319,8 @@ body {
   padding-left: 32px;
   min-width: 200px;
   transition: 0.3s;
+  cursor: pointer;
+  border: none;
 }
 
 .button.primary:hover {
@@ -383,7 +468,7 @@ body {
   height: auto;
 }
 
-.about-us .image-box-desktop::after {
+.about-us .image-box-desktop::before {
   content: "Десктопные приложения";
   position: absolute;
   bottom: 0;
@@ -718,6 +803,13 @@ body {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin-bottom: 21px;
+}
+
+.footer .form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
 }
 
 .footer .form-title {
